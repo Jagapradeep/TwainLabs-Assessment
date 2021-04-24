@@ -32,7 +32,7 @@ app.use("/politicalParties",politicalParties);
 app.use("/works",works);
 app.use("/politicians/ratings",politicianRatings);
 app.use("/politicalParties/ratings",politicalPartyRatings);
-app.use("/politicalParties/works/ratings",workRatings);
+app.use("/politicians/works/ratings",workRatings);
 
 const port = process.env.PORT || 3000;
 app.listen(port,() => debugStartup(`Listening on port ${port}`));
