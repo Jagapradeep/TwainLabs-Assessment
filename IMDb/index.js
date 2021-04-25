@@ -1,8 +1,6 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const debugStartup = require('debug')('IMDb:startup');
-const debugDb = require('debug')('IMDb:Db');
 const users = require("./routes/users");
 const politicians = require("./routes/politicians");
 const politicalParties = require("./routes/politicalParties");
@@ -18,10 +16,10 @@ mongoose
     useFindAndModify: false,
     })
   .then(() => {
-    debugDb("Connected Successfully To mongodb");
+    console.log(" -info: Connected Successfully To mongodb");
   })
   .catch((e) => {
-    debugDb(e);
+    console.log(e);
   });
 
 app.use(express.json());
@@ -33,6 +31,7 @@ app.use("/works",works);
 app.use("/politicians/ratings",politicianRatings);
 app.use("/politicalParties/ratings",politicalPartyRatings);
 app.use("/politicians/works/ratings",workRatings);
+require('./startup/prod')(app);
 
 const port = process.env.PORT || 3000;
-app.listen(port,() => debugStartup(`Listening on port ${port}`));
+app.listen(port,() => console.log(` -info: Listening on port ${port}`));
