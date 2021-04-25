@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const config = require("config");
 const users = require("./routes/users");
 const politicians = require("./routes/politicians");
 const politicalParties = require("./routes/politicalParties");
@@ -9,8 +10,10 @@ const politicianRatings = require("./routes/politicianRatings");
 const politicalPartyRatings = require("./routes/politicalPartyRatings");
 const workRatings = require("./routes/workRatings");
 
+const connectionString = `${config.get('db')}`;
+
 mongoose
-  .connect("mongodb://localhost/IMDb", {
+  .connect(connectionString, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
