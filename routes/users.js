@@ -3,7 +3,7 @@ const router = express.Router();
 const { User , validate} = require('../models/user');
 
 router.get("/",async (req,res) => {
-    const users = User.find();
+    const users = await User.find();
     res.send(users);
 });
 
