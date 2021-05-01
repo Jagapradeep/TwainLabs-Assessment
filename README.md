@@ -21,7 +21,7 @@
 - Download the code or clone it into your system.
 - Run `npm i` to download all required node modules.
 - At last run `node index.js`.
-- If node is not installed in your syatem install it.
+- If node is not installed in your system install it.
 
 ## API ENDPOINTS
 
